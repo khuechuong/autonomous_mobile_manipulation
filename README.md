@@ -209,6 +209,8 @@ ROS_NAMESPACE="bvr_SIM" roslaunch robowork_moveit_config robowork_moveit_plannin
 
 # Terminal 3 - Visualization (If not already running for the real robot)
 roslaunch robowork_moveit_config moveit_rviz.launch
+# yellow = current cluster, green = success, red = failed, try again at the end, purple = failed, don't try again, blue = unvisited.
+# red arrow on cluster = current Moveit point
 
 # Terminal A1 - Launch robowork_planning sample node (vTest)
 ROS_NAMESPACE="bvr_SIM" roslaunch robowork_planning move_group_interface_vTest.launch robot_namespace:=bvr_SIM arm_namespace:=main_arm_SIM sim_suffix:=_SIM
