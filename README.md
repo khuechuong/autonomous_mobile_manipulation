@@ -197,3 +197,23 @@ Go into full_coverage.py and change the csv path to your
 ```
 csv_path = "/home/ara/autonomous_mobile_manipulation/src/autonomous_mobile_manipulation/gazebo_resources/model_facets/boat.csv"
 ```
+Note: full_coverage.py doesn't use python3 because I couldn't use tf with melodic using python3
+
+To run:
+```
+# Terminal 1 - Launch Simulation 
+roslaunch robowork_gazebo bvr_SIM_playpen.launch
+
+# Terminal 2 - Launch MoveIt! move_group planning
+ROS_NAMESPACE="bvr_SIM" roslaunch robowork_moveit_config robowork_moveit_planning_execution.launch robot_namespace:=bvr_SIM arm_namespace:=main_arm_SIM sim_suffix:=_SIM
+
+# Terminal 3 - Visualization (If not already running for the real robot)
+roslaunch robowork_moveit_config moveit_rviz.launch
+
+# Terminal A1 - Launch robowork_planning sample node (vTest)
+ROS_NAMESPACE="bvr_SIM" roslaunch robowork_planning move_group_interface_vTest.launch robot_namespace:=bvr_SIM arm_namespace:=main_arm_SIM sim_suffix:=_SIM
+
+chmod +x full_coverage.py
+# Our implementation
+rosrun robowork_planning full_coverage.py
+```
