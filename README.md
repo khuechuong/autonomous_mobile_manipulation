@@ -197,7 +197,7 @@ Go into full_coverage.py and change the csv path to your
 ```
 csv_path = "/home/ara/autonomous_mobile_manipulation/src/autonomous_mobile_manipulation/gazebo_resources/model_facets/boat.csv"
 ```
-Note: full_coverage.py doesn't use python3 because I couldn't use tf with melodic using python3
+Note: [full_coverage.py](https://github.com/khuechuong/autonomous_mobile_manipulation/blob/project/robowork_planning/script/full_coverage.py) doesn't use python3 because I couldn't use tf with melodic using python3
 
 To run:
 ```
