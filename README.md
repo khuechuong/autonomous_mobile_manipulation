@@ -189,6 +189,11 @@ rosservice call /compliance_controller/toggle_compliance "{}"
 # Move the interactive_marker_3d_twist on Rviz to command jogging references
 ```
 ### Project 
+Install python libraries
 ```
 pip install shapely scikit-learn matplotlib scipy numpy
+```
+Go into full_coverage.py and change the csv path to your
+```
+csv_path = "/home/ara/autonomous_mobile_manipulation/src/autonomous_mobile_manipulation/gazebo_resources/model_facets/boat.csv"
 ```
