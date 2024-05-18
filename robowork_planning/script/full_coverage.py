@@ -49,7 +49,7 @@ class FullCoverage:
         """ load coverage points    """
         array_from_csv = np.genfromtxt(csv_path, delimiter=',', skip_header=1)
         """ generate viewpoints """
-        viewpoints = u.calculate_viewpoints(array_from_csv, 0.3)
+        viewpoints = u.calculate_viewpoints(array_from_csv, 0.3, z_min=0.3)
         """ generate a boundary offset of 0.4   """
         self.bound = u.create_boundary(array_from_csv, 0.8, False, 0.3)
         """ divide viewpoints into clusters and cluster base locations """
@@ -112,7 +112,7 @@ class FullCoverage:
                     stacked = np.vstack(self.point_failed)
                     avg_x = np.mean(stacked[:, 0])
                     avg_y = np.mean(stacked[:, 1])
-                    distances = np.linalg.norm(self.bound[:, :2], np.array([avg_x, avg_y]), axis=1)
+                    distances = np.linalg.norm(self.bound[:, :2] - np.array([avg_x, avg_y]), axis=1)
                     closest_index = np.argmin(distances)
                     """ new position    """
                     closest_point = self.bound[closest_index]
@@ -176,8 +176,8 @@ class FullCoverage:
         rospy.loginfo("Success: %s", self.success_msg)
         
         if self.success_msg:
-            rospy.loginfo("Waiting moveit for 8 secs")
-            rospy.sleep(8)
+            rospy.loginfo("Waiting moveit for 12 secs")
+            rospy.sleep(12)
             rospy.loginfo("Moveit Done!")
             self.point_reached.append(np.array([p_x, p_y, p_z, o_x, o_y, o_z, o_w]))
         else:
@@ -284,7 +284,7 @@ class FullCoverage:
             
             color = ColorRGBA()
             color.a = 1.0
-            color.r, color.g, color.b = 1.0, 1.0, 0.0
+            color.r, color.g, color.b = 1.0, 0.0, 1.0
             marker.colors.append(color)
 
         self.publisher.publish(marker)
