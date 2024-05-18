@@ -217,3 +217,4 @@ chmod +x full_coverage.py
 # Our implementation
 rosrun robowork_planning full_coverage.py
 ```
+Please let me know if there's an issue running the code! Thank you!
