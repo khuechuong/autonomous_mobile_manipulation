@@ -188,3 +188,7 @@ rosservice call /compliance_controller/toggle_compliance "{}"
 
 # Move the interactive_marker_3d_twist on Rviz to command jogging references
 ```
+### Project 
+```
+pip install shapely scikit-learn matplotlib scipy numpy
+```
