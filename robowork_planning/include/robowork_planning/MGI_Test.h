@@ -18,6 +18,8 @@
 
 #include <tf/transform_listener.h>
 
+#include <std_msgs/Bool.h>
+
 
 namespace move_group_interface {
 
@@ -66,6 +68,8 @@ class MGI_Test {
     ros::Subscriber rc_sub_;
     ros::Subscriber endeffector_goal_position_sub_;
     ros::Subscriber endeffector_goal_pose_sub_;
+
+    ros::Publisher plan_success_;
 
 };  //  class MGI_Test
 
