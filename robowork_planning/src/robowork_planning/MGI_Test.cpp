@@ -61,6 +61,8 @@ void MGI_Test::initialize()
   rc_sub_ = nh_.subscribe("/rviz_visual_tools_gui", 10, &MGI_Test::rc_cb, this);
   endeffector_goal_position_sub_ = nh_.subscribe("/endeffector_goal_position", 10, &MGI_Test::endeffector_goal_position_cb, this);
   endeffector_goal_pose_sub_ = nh_.subscribe("/endeffector_goal_pose", 10, &MGI_Test::endeffector_goal_pose_cb, this);
+  plan_success_ = nh_.advertise<std_msgs::Bool>("success", 10, this);
+
 
   ROS_INFO_STREAM_NAMED(move_group::NODE_NAME, "Setup complete!");
 }
@@ -230,7 +232,11 @@ void MGI_Test::plan() {
     moveit::planning_interface::MoveGroupInterface::Plan my_plan;
     bool success = (move_group_->plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
     ROS_INFO("Visualizing plan (constraints) %s", success ? "" : "FAILED");
-  
+
+    std_msgs::Bool success_msg;
+    success_msg.data = success;
+    plan_success_.publish(success_msg);
+
     // Visualizing plans
     geometry_msgs::PoseStamped target_pose_VT;
     tf_listener_->transformPose(visual_tools_->getBaseFrame(), target_pose, target_pose_VT);
