@@ -1,4 +1,4 @@
-# autonomous_mobile_manipulation (go to project branch)
+# autonomous_mobile_manipulation (go to [project](https://github.com/khuechuong/autonomous_mobile_manipulation/tree/project) branch)
 
 Basic setup assumes *Ubuntu 18.04* with [ROS melodic](http://wiki.ros.org/melodic/Installation/Ubuntu) and [catkin_tools](https://catkin-tools.readthedocs.io/en/latest/installing.html) installed.
 
